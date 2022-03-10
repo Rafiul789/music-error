@@ -23,15 +23,15 @@ const showArtists = (data) => {
         <div class="image-container-inner">
           <img
             src="${artist.strArtistThumb  ? artist.strArtistThumb
-                : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png }"
-            alt=""
+                : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png "}
+            alt="
           />
         </div>
       </div>
       <div class="info-container">
-        <h1>${artist.strArtist}</h1>
-        <p>Country: ${artist.strCountry}</p>
-        <p>Style: ${artist.strGenre}</p>
+        <h1>${artist.strArtist ? artist.strArtist : "Not Available" }</h1>
+        <p>Country: ${artist.strCountry  ? artist.strCountry : "Not Available" }</p>
+        <p>Style: ${artist.strGenre ? artist.strGenre : "Not Available" }</p>
       </div>
       <button class="album-button">
         <i class="fa-solid fa-compact-disc"></i>
