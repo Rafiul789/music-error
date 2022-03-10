@@ -22,7 +22,8 @@ const showArtists = (data) => {
         div.innerHTML = `<div class="image-container">
         <div class="image-container-inner">
           <img
-            src="${artist.strArtistThumb}"
+            src="${artist.strArtistThumb  ? artist.strArtistThumb
+                : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png }"
             alt=""
           />
         </div>
@@ -37,8 +38,8 @@ const showArtists = (data) => {
         <p onclick="fetchAlbums('${artist.idArtist}')" class="button-title">Albums</p>
       </button>`;
         artistContainer.appendChild(div);
-    });
-};
+    })
+}
 
 const fetchAlbums = (id) => {
     const url = `https://theaudiodb.com/api/v1/json/2/album.php?i=${id}`;
@@ -50,19 +51,20 @@ const fetchAlbums = (id) => {
 };
 
 const showAlbum = (data) => {
+
     const albumContainer = elementById("albums");
-    album.forEach((item) => {
+    data.album.forEach((item) => {
         const div = document.createElement("div");
         div.classList.add("album");
         div.innerHTML = `
         <div class="album-image-container">
           <img
-            src="${album.strAlbumThumb}"
+            src="${item.strAlbumThumb}"
             alt=""
           />
         </div>
         <div class="album-name">
-          <h3>${album.strAlbum}</h3>
+          <h3>${item.strAlbum}</h3>
         </div>
       `;
 
